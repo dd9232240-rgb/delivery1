@@ -58,6 +58,7 @@ function Cardapio() {
           console.error(
             "Estabelecimento não encontrado."
           );
+
           return;
         }
 
@@ -190,8 +191,6 @@ function Cardapio() {
       setFoto(urlFinal);
     }
 
-    // Mantido para caso a API do estabelecimento
-    // também envie produtos
     if (
       Array.isArray(
         estabelecimento.produtos
@@ -326,9 +325,7 @@ function Cardapio() {
               />
 
               <span className="ms-1">
-                {Number(
-                  avaliacao
-                ).toFixed(1)}
+                {Number(avaliacao).toFixed(1)}
               </span>
 
               <span className="ms-3">
@@ -342,11 +339,9 @@ function Cardapio() {
               <span>
                 <b>
                   Taxa de entrega:
-                </b>{}
+                </b>{" "}
 
-                {formatarMoeda(
-                  entrega
-                )}
+                {formatarMoeda(entrega)}
               </span>
 
               <span className="ms-5">
@@ -354,9 +349,7 @@ function Cardapio() {
                   Pedido mínimo:
                 </b>{" "}
 
-                {formatarMoeda(
-                  minimo
-                )}
+                {formatarMoeda(minimo)}
               </span>
 
             </div>
@@ -367,44 +360,42 @@ function Cardapio() {
 
           {categorias.length > 0 ? (
 
-            categorias.map(
-              (categoria) => {
+            categorias.map((categoria) => {
 
-                const produtosDaCategoria =
-                  produtos.filter(
-                    (produto) =>
-                      produto.categoria === categoria
-                  );
-
-                return (
-                  <div
-                    className="row mt-5"
-                    key={categoria}
-                  >
-
-                    <div className="mb-3">
-                      <h5>
-                        {categoria}
-                      </h5>
-                    </div>
-
-                    {produtosDaCategoria.map(
-                      (produto, index) => (
-                        <Produto
-                          key={
-                            produto.id ||
-                            produto.id_produto ||
-                            index
-                          }
-                          produto={produto}
-                        />
-                      )
-                    )}
-
-                  </div>
+              const produtosDaCategoria =
+                produtos.filter(
+                  (produto) =>
+                    produto.categoria === categoria
                 );
-              }
-            )
+
+              return (
+                <div
+                  className="row mt-5"
+                  key={categoria}
+                >
+
+                  <div className="mb-3">
+                    <h5>
+                      {categoria}
+                    </h5>
+                  </div>
+
+                  {produtosDaCategoria.map(
+                    (produto, index) => (
+                      <Produto
+                        key={
+                          produto.id ||
+                          produto.id_produto ||
+                          index
+                        }
+                        produto={produto}
+                      />
+                    )
+                  )}
+
+                </div>
+              );
+            })
 
           ) : produtos.length > 0 ? (
 
@@ -441,10 +432,15 @@ function Cardapio() {
                 </h5>
               </div>
 
-              {[1, 2, 3, 4, 5].map(
-                (item) => (
+              {produtos.map(
+                (produto, index) => (
                   <Produto
-                    key={item}
+                    key={
+                      produto.id ||
+                      produto.id_produto ||
+                      index
+                    }
+                    produto={produto}
                   />
                 )
               )}
