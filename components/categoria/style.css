@@ -1,0 +1,45 @@
+.categoria a{
+  color:rgb(56, 54, 54) ;
+  text-decoration: none;
+}
+
+
+.categoria a:hover{
+  color:rgb(200, 50, 50) ;
+  text-decoration: none;
+}
+
+.categoria span{
+  font-size: 15px;
+}
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px;
+  margin-top: 35px;
+  border-radius: 12px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.categoria:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.img-categoria {
+ max-width: 55px;
+  
+}
+
+.nome-categoria {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+ 
